@@ -2,6 +2,7 @@
 
 #creation d'utilisateur
 #si il y a des arguments alors on continue sinon afficher le probleme
+#pour chaque argument donner rechercher dans la base de données si il existe
 #si utilisateur existant afficher le probleme
 #sinon si creation du compte se passe bien alors afficher succes
 #sinon afficher probleme
