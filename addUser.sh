@@ -19,7 +19,7 @@ if [ $# -eq 0 ]
                     then
                         echo "utilisater $user existe"
                     else
-                        if sudo useradd "$user"
+                        if adduser "$user"
                             then
                             echo "utilisateur $user a été cree"
                         else
