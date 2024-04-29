@@ -1,30 +1,24 @@
 #!/bin/bash
+#script pour creer des utilisateurs :
 
-#creation d'utilisateur
-#si il y a des arguments alors on continue sinon afficher le probleme
-#pour chaque argument donner rechercher dans la base de données si il existe
-#si utilisateur existant afficher le probleme
-#sinon si creation du compte se passe bien alors afficher succes
-#sinon afficher probleme
-#fin
 
 if [ $# -eq 0 ]
     then
-        echo "ajout d'argument"
+#Si la liste des arguments est vide alors message erreur
+        echo "Il y a aucun argument, veuillez ajouter des arguments !"
         exit 1
-        else
-            for user in $@
-            do
-                if cat /etc/passwd | grep "$user" &>/dev/null
-                    then
-                        echo "utilisater $user existe"
-                    else
-                        if adduser "$user"
-                            then
-                            echo "utilisateur $user a été cree"
-                        else
-                            echo "echec a la creation du $user"
-                        fi
+    else
+#chercher dans la liste d arguments si l utilisateur existe si non alors on le créer
+        for user in $@
+        do
+            if cat /etc/passwd | grep "$user" &>/dev/null
+                then
+                    echo "L'utilisateur $user existe déjà !"
+                else
+                    useradd $user
+                    echo "L'utilisateur $user a bien été créé."
                 fi
-            done
+        done
 fi
+
+
